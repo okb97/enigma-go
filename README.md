@@ -9,11 +9,11 @@
 
 ## 特徴
 
-- ✅ エニグマの暗号化アルゴリズムを実装
-- ✅ ローター、リフレクター、プラグボードの再現
-- ✅ CLIによる操作
-- ✅ JSON形式での設定管理
-- ✅ 自己逆元特性（暗号化=復号化）
+- エニグマの暗号化アルゴリズムを実装
+- ローター、リフレクター、プラグボードの再現
+- CLIによる操作
+- JSON形式での設定管理
+- 自己逆元特性（暗号化=復号化）
 
 ## 技術仕様
 
@@ -74,6 +74,5 @@ enigma-go/
     ├── 01_JSON_CONFIG_DESIGN.md
     ├── 02_IMPLEMENTATION_DESIGN.md
     ├── 03_ROTOR_SPECIFICATION.md
-    ├── 04_CLI_USAGE.md
-    └── 05_TESTING_GUIDE.md
+    └── 04_CLI_USAGE.md
 ```
