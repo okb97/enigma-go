@@ -8,13 +8,13 @@
     },
     {
       "type": "II",
-      "position": "A",
-      "ring_setting": 0  
+      "position": "B",
+      "ring_setting": 3 
     },
     {
       "type": "III",
-      "position": "A",
-      "ring_setting": 0
+      "position": "V",
+      "ring_setting": 6
     }
   ],
   "reflector": ["AB", "CD", "EF", "GH", "IJ", "KL", "MN", "OP", "QR", "ST", "UV", "WY", "XZ"],
