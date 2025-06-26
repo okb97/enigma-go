@@ -9,19 +9,18 @@
 
 ## 特徴
 
-- ✅ エニグマの暗号化アルゴリズムを完全実装
+- ✅ エニグマの暗号化アルゴリズムを実装
 - ✅ ローター、リフレクター、プラグボードの再現
 - ✅ CLIによる操作
 - ✅ JSON形式での設定管理
 - ✅ 自己逆元特性（暗号化=復号化）
-- ✅ 歴史的に正確なローター配線パターン
 
 ## 技術仕様
 
-- **言語**: Go 1.24.3
+- **言語**: Go
 - **設定**: JSON
 - **CLI**: flag パッケージ
-- **対象**: エニグマI型（3ローター構成）
+- **対象**: エニグマ（3ローター構成）
 - **ローター**: I, II, III, IV, V対応
 - **文字処理**: A-Z（26文字）
 
@@ -78,54 +77,3 @@ enigma-go/
     ├── 04_CLI_USAGE.md
     └── 05_TESTING_GUIDE.md
 ```
-
-## ビルド方法
-
-### 開発時実行
-```bash
-go run cmd/enigma/Enigma.go -input "TEST" -config "config/test_config.json"
-```
-
-### バイナリビルド
-```bash
-go build -o enigma cmd/enigma/Enigma.go
-./enigma -input "TEST" -config "config/test_config.json"
-```
-
-## テスト
-
-### 基本テスト
-```bash
-# 自己逆元テスト
-go run cmd/enigma/Enigma.go -input "A" -config "config/test_config.json"
-# 出力をもう一度入力して元に戻ることを確認
-```
-
-### 詳細なテストについては
-`document/05_TESTING_GUIDE.md` を参照してください。
-
-## 実装状況
-
-### ✅ 完了済み
-- ローターの順方向・逆方向変換
-- リフレクター処理
-- プラグボード処理
-- JSON設定読み込み
-- CLI実装
-- 自己逆元特性の実装
-
-### 🚧 今後の拡張予定
-- 完全なダブルステッピング機能
-- 詳細なエラーログ
-- 設定ファイルバリデーション
-- バッチ処理モード
-
-## 技術的な詳細
-
-詳細な設計と実装については `document/` フォルダ内の各設計書を参照してください：
-
-- **01_JSON_CONFIG_DESIGN.md**: JSON設定仕様
-- **02_IMPLEMENTATION_DESIGN.md**: 実装アーキテクチャ
-- **03_ROTOR_SPECIFICATION.md**: ローター詳細仕様
-- **04_CLI_USAGE.md**: CLI詳細使用方法
-- **05_TESTING_GUIDE.md**: テスト方法とガイド
