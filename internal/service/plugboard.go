@@ -2,7 +2,7 @@ package service
 
 // プラグボードの設定
 type PlugboardConfig struct {
-	plugboardConfig []string
+	PlugboardConfig []string
 }
 
 type Plugboard struct {
@@ -14,7 +14,7 @@ func PlugboardJsonToMap(plugboardConfig PlugboardConfig) *Plugboard {
 	pb := &Plugboard{
 		plugboard: make(map[string]string),
 	}
-	for _, pairs := range plugboardConfig.plugboardConfig {
+	for _, pairs := range plugboardConfig.PlugboardConfig {
 		pair0 := string(pairs[0])
 		pair1 := string(pairs[1])
 		pb.plugboard[pair0] = pair1

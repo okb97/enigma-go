@@ -20,9 +20,9 @@ var rotorNotchPositions = map[string]string{
 
 // ローターの設定
 type RotorConfig struct {
-	rotorType     string
-	rotorPosition string
-	ringSetting   int
+	RotorType     string
+	RotorPosition string
+	RingSetting   int
 }
 
 type Rotor struct {
@@ -36,17 +36,17 @@ type Rotor struct {
 
 // ローターを初期化
 func InitialRotor(config RotorConfig) *Rotor {
-	notchPosition := rotorNotchPositions[config.rotorType]
-	forwardWiring := buildForwardWiring(config.rotorType)
-	backwardWiring := buildBackwardWiring(config.rotorType)
-	currentPosition := 0
+	notchPosition := rotorNotchPositions[config.RotorType]
+	forwardWiring := buildForwardWiring(config.RotorType)
+	backwardWiring := buildBackwardWiring(config.RotorType)
+	currentPosition := int(config.RotorPosition[0] - 'A')
 	return &Rotor{
-		rotorType:       config.rotorType,
+		rotorType:       config.RotorType,
 		forwardWiring:   forwardWiring,
 		backwardWiring:  backwardWiring,
 		notchPosition:   notchPosition,
 		currentPosition: currentPosition,
-		ringSetting:     config.ringSetting,
+		ringSetting:     config.RingSetting,
 	}
 
 }
@@ -80,19 +80,19 @@ func (r *Rotor) ForwardTransform(input string) string {
 	transformdString := r.forwardWiring[transformString]
 	transformdPos := int(transformdString[0] - 'A')
 	mappedPos := (transformdPos - currentPos + r.ringSetting + 26) % 26
-	return string('A' + mappedPos)
+	return string(rune('A') + rune(mappedPos))
 }
 
 // 逆方向のローターの変換
 func (r *Rotor) BackwardTransform(input string) string {
 	currentPos := r.currentPosition
 	inputPos := int(rune(input[0]) - 'A')
-	transformPos := (inputPos - currentPos + r.ringSetting + 26) % 26
+	transformPos := (inputPos + currentPos - r.ringSetting + 26) % 26
 	transformString := string(rune('A') + rune(transformPos))
 	transformdString := r.backwardWiring[transformString]
 	transformdPos := int(transformdString[0] - 'A')
-	mappedPos := (transformdPos + currentPos - r.ringSetting + 26) % 26
-	return string('A' + mappedPos)
+	mappedPos := (transformdPos - currentPos + r.ringSetting + 26) % 26
+	return string(rune('A') + rune(mappedPos))
 }
 
 // ローターを回転
@@ -101,10 +101,20 @@ func (r *Rotor) Rotate() {
 }
 
 func (r *Rotor) GetPosition() string {
-	return string('A' + r.currentPosition)
+	return string(rune('A') + rune(r.currentPosition))
 }
 
 func (r *Rotor) IsAtNotch() bool {
-	currenChar := string('A' + r.currentPosition)
+	currenChar := string(rune('A') + rune(r.currentPosition))
 	return currenChar == r.notchPosition
+}
+
+// 位置を設定
+func (r *Rotor) SetPosition(position string) {
+	r.currentPosition = int(position[0] - 'A')
+}
+
+// 初期位置にリセット
+func (r *Rotor) Reset() {
+	r.currentPosition = 0
 }

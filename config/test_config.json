@@ -1,0 +1,22 @@
+{
+  "name": "test_setting_001",
+  "rotors": [
+    {
+      "type": "I",
+      "position": "A", 
+      "ring_setting": 0
+    },
+    {
+      "type": "II",
+      "position": "A",
+      "ring_setting": 0  
+    },
+    {
+      "type": "III",
+      "position": "A",
+      "ring_setting": 0
+    }
+  ],
+  "reflector": ["AB", "CD", "EF", "GH", "IJ", "KL", "MN", "OP", "QR", "ST", "UV", "WY", "XZ"],
+  "plugboard": ["AB", "CD", "EF", "GH", "IJ"]
+}

@@ -2,7 +2,7 @@ package service
 
 // リフレクターの設定
 type ReflectorConfig struct {
-	reflectorConfig []string
+	ReflectorConfig []string
 }
 
 type Reflector struct {
@@ -14,7 +14,7 @@ func ReflectorJsonToMap(config ReflectorConfig) *Reflector {
 	ref := &Reflector{
 		reflector: make(map[string]string),
 	}
-	for _, pairs := range config.reflectorConfig {
+	for _, pairs := range config.ReflectorConfig {
 		pair0 := string(pairs[0])
 		pair1 := string(pairs[1])
 		ref.reflector[pair0] = pair1
